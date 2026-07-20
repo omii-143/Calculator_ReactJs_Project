@@ -1,4 +1,5 @@
 name: First Action
+
 on: [push]
 
 jobs:
@@ -6,11 +7,11 @@ jobs:
       runs-on: aquasec/trivy-scan@v2
 
       steps:
-          name: Checkout code
-          uses: actions/checkout@v3
+          - name: Checkout code
+            uses: actions/checkout@v3
 
-          name: Trivy Scan
-          uses: aquasec/trivy-scan@v2
-          
-          run: |
-            - trivy fs .
+          - name: Trivy Scan
+            uses: aquasec/trivy-scan@latest
+
+          - name: Trivy Start Scan
+            run: trivy fs .
